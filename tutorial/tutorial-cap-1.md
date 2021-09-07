@@ -13,7 +13,12 @@
 - Montar o visual estático do front end
 - Publicar o front end no Netlify
 
-## AVISO: as aulas ficarão disponíveis somente até domingo às 23h59
+## Extensões baixadas no Vscode
+- ESLint
+- Color Highlight
+- JSX HTML <tags/>
+- Markdown Preview Github Styling
+- Visual Studio IntelliCode
 
 ## Checklist
 
