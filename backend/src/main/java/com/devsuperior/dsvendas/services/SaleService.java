@@ -1,6 +1,8 @@
 package com.devsuperior.dsvendas.services;
 
 import com.devsuperior.dsvendas.dtos.SaleDTO;
+import com.devsuperior.dsvendas.dtos.SaleSuccessDTO;
+import com.devsuperior.dsvendas.dtos.SaleSumDTO;
 import com.devsuperior.dsvendas.entities.Sale;
 import com.devsuperior.dsvendas.repositories.SaleRepository;
 import com.devsuperior.dsvendas.repositories.SellerRepository;
@@ -38,5 +40,15 @@ public class SaleService {
 
         //Cada elemento da lista original é convertida para a classe alvo DTO e depois a stream é convertida para lista
         return result.map(data -> new SaleDTO(data));
+    }
+
+    @Transactional(readOnly = true)
+    public List<SaleSumDTO> amountGroupBySeller(){
+        return repository.amountGroupBySeller();
+    }
+
+    @Transactional(readOnly = true)
+    public List<SaleSuccessDTO> saleSuccessGroupBySeller(){
+        return repository.saleSuccessGroupBySeller();
     }
 }
