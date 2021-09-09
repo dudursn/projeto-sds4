@@ -1,37 +1,41 @@
-package com.devsuperior.dsvendas.entities;
+package com.devsuperior.dsvendas.dtos;
 
-import javax.persistence.*;
+
+import com.devsuperior.dsvendas.entities.Sale;
+
+import java.io.Serializable;
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "tb_sales")
-public class Sale {
+public class SaleDTO implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private Integer visited;
     private Integer deals;
     private double amount;
     private LocalDate date;
 
-    @ManyToOne
-    @JoinColumn(name = "seller_id")
-    private Seller seller;
+    private SellerDTO seller;
 
-    public Sale() {
-
+    public SaleDTO() {
     }
 
-
-    public Sale(Long id, Integer visited, Integer deals, double amount, LocalDate date, Seller seller) {
+    public SaleDTO(Long id, Integer visited, Integer deals, double amount, LocalDate date, SellerDTO seller) {
         this.id = id;
         this.visited = visited;
         this.deals = deals;
         this.amount = amount;
         this.date = date;
         this.seller = seller;
+    }
+
+    public SaleDTO(Sale entity) {
+        this.id = entity.getId();
+        this.visited = entity.getVisited();
+        this.deals = entity.getDeals();
+        this.amount = entity.getAmount();
+        this.date = entity.getDate();
+        this.seller = new SellerDTO(entity.getSeller());
+
     }
 
     public Long getId() {
@@ -74,11 +78,11 @@ public class Sale {
         this.date = date;
     }
 
-    public Seller getSeller() {
+    public SellerDTO getSeller() {
         return seller;
     }
 
-    public void setSeller(Seller seller) {
+    public void setSeller(SellerDTO seller) {
         this.seller = seller;
     }
 }
