@@ -28,14 +28,14 @@ public class SaleController {
         return ResponseEntity.ok(list);
     }
 
-    @GetMapping(value = "/amount-by-selller")
+    @GetMapping(value = "/amount-by-seller")
     public ResponseEntity<List<SaleSumDTO>> amountGroupBySeller(){
 
         List<SaleSumDTO> list = service.amountGroupBySeller();
         return ResponseEntity.ok(list);
     }
 
-    @GetMapping(value = "/sale-success-by-selller")
+    @GetMapping(value = "/sale-success-by-seller")
     public ResponseEntity<List<SaleSuccessDTO>> saleSuccessGroupBySeller(){
 
         List<SaleSuccessDTO> list = service.saleSuccessGroupBySeller();
